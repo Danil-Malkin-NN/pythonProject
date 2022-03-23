@@ -1,16 +1,16 @@
 import collections
-from locale import _grouping_intervals
 
 import pandas.core.groupby
 
+from leson2 import student
 from leson2.student import Student
 
-list = []
+list_s = []
 
-list.append(Student("Ivan", 'Ivanov', '2001', 'PINZH-20', '2', [6, 4, 8, 10, 5]))
-list.append(Student("Avan", 'Ivanov', '2001', 'PINZH-20', '2', [6, 4, 8, 10, 5]))
-list.append(Student('Sergey', "Sergeevich", '2001', 'PINZH-20', '2', [8, 8, 6, 6, 8]))
-list.append(Student('Ivan', 'Ivanov', '2002', 'PINZH-19', '3', [8, 3, 7, 6, 4]))
+list_s.append(Student("Ivan", 'Ivanov', '2001', 'PINZH-20', '2', [6, 4, 8, 10, 5]))
+list_s.append(Student("Avan", 'Ivanov', '2001', 'PINZH-20', '2', [6, 4, 8, 10, 5]))
+list_s.append(Student('Sergey', "Sergeevich", '2001', 'PINZH-20', '2', [8, 8, 6, 6, 8]))
+list_s.append(Student('Ivan', 'Ivanov', '2002', 'PINZH-19', '3', [8, 3, 7, 6, 4]))
 
 # studentList.sort(key= student: student.first_name, reverse=True)
 
@@ -21,15 +21,32 @@ def sorting(studentList):
         print(studetn)
 
 def group_list(lst):
-    df = pandas.DataFrame(lst)
-    edn = df.groupby(group_keys= lambda student: student.group_name)
-    print(edn)
+    map_student = dict.fromkeys([stud.group_name for stud in lst])
 
-sorting(list)
+    for student in lst:
+        key = student.group_name
+        if( map_student[key] == None):
+            map_student[key] = [student]
+        else:
+            map_student[key].append(student)
+
+
+    for s in map_student:
+        print(s)
+
+
+
+
+
+
+
+    print(map_student)
+
+sorting(list_s)
 
 print()
 
-group_list(list)
+group_list(list_s)
 
 
 
