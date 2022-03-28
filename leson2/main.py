@@ -1,10 +1,10 @@
 import collections
 
 import numpy
-import pandas.core.groupby
 
-from leson2 import student
 from leson2.student import Student
+from itertools import groupby
+from pprint import pprint
 
 list_s = []
 
@@ -24,29 +24,29 @@ def sorting(studentList):
 
 
 def group_list(lst):
-    map_student = dict.fromkeys([stud.group_name for stud in lst])
-
-    for student in lst:
-        key = student.group_name
-        if (map_student[key] == None):
-            map_student[key] = [student]
-        else:
-            map_student[key].append(student)
-
-    for s, value in map_student.items():
-
-        print(s)
-        marks = dict
-
-        for student in value:
-            marks.update({student.group_name + student.first_name + g: numpy.mean(student.marks_list)})
+    map_student = {k: list(v) for k, v in groupby(lst, key=lambda x: x.group_name)}
+    return map_student
 
 
-    print(map_student)
+def average(lst):
+    return sum(lst) / len(lst)
+
+
+def sum_marks(map_student):
+    for key, value in map_student.items():
+        best_student = [None, 0]
+        for stud in value:
+            a = average(stud.marks_list)
+            if (best_student[1] < a):
+                best_student[0] = stud
+                best_student[1] = a
+        print(f'''Best student in group {key} is {best_student[0]}''')
 
 
 sorting(list_s)
 
 print()
 
-group_list(list_s)
+map_s = group_list(list_s)
+sum_marks(map_s)
+

@@ -1,10 +1,4 @@
 class Student:
-    first_name = ''
-    last_name = ''
-    year_of_birthday = ''
-    group_name = ''
-    course = 1
-    marks_list = []
 
     def __init__(self, f_name, l_name, year, group, course, marks):
         self.first_name = f_name
