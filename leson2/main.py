@@ -14,8 +14,6 @@ list_s.append(Student('Sergey', "Sergeevich", '2001', 'PINZH-20', '2', [8, 8, 6,
 list_s.append(Student('Ivan', 'Ivanov', '2002', 'PINZH-19', '3', [8, 3, 7, 6, 4]))
 
 
-# studentList.sort(key= student: student.first_name, reverse=True)
-
 def sorting(studentList):
     studentList = sorted(studentList, key=lambda student: (student.course, student.first_name, student.last_name),
                          reverse=False)
@@ -43,10 +41,14 @@ def sum_marks(map_student):
         print(f'''Best student in group {key} is {best_student[0]}''')
 
 
+print("Сортировка по курсу, имени и фамилии")
 sorting(list_s)
-
 print()
 
 map_s = group_list(list_s)
+pprint("Поиск лучшего студента по всем оценкам")
 sum_marks(map_s)
+
+
+
 
