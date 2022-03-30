@@ -46,15 +46,18 @@ map_s = group_list(list_s)
 pprint("Поиск лучшего студента по всем оценкам")
 sum_marks(map_s)
 
+print()
 print("Поиск младшего студента")
 print(max(list_s, key=lambda stud: int(stud.year_of_birthday)))
+
+print()
 print("Поиск старшего студента")
 print(min(list_s, key=lambda stud: int(stud.year_of_birthday)))
 
 print()
 print("Средний бал для каждого предмета каждой группы")
 def search_average_score_by_matrix(matrix):
-    res = [round(sum(x) / len(matrix), 2) for x in zip(*matrix)]
+    res = [round(average(x), 2) for x in zip(*matrix)]
     print(res)
 
 
