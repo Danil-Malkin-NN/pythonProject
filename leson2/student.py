@@ -12,6 +12,6 @@ class Student:
         return self.first_name + " " + self.last_name + " " + self.year_of_birthday + " " + self.group_name + " cours " + self.course + " Marks: " + "/".join(str(x) for x in self.marks_list)
 
     def __repr__(self) -> str:
-        return self.first_name
+        return self.__str__()
 
 

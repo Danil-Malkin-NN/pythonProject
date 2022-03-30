@@ -1,7 +1,3 @@
-import collections
-
-import numpy
-
 from leson2.student import Student
 from itertools import groupby
 from pprint import pprint
@@ -19,6 +15,7 @@ def sorting(studentList):
                          reverse=False)
     for studetn in studentList:
         print(studetn)
+    return studentList
 
 
 def group_list(lst):
@@ -42,13 +39,29 @@ def sum_marks(map_student):
 
 
 print("Сортировка по курсу, имени и фамилии")
-sorting(list_s)
-print()
+list_s = sorting(list_s)
+print(list_s)
 
 map_s = group_list(list_s)
 pprint("Поиск лучшего студента по всем оценкам")
 sum_marks(map_s)
 
+print("Поиск младшего студента")
+print(max(list_s, key=lambda stud: int(stud.year_of_birthday)))
+print("Поиск старшего студента")
+print(min(list_s, key=lambda stud: int(stud.year_of_birthday)))
+
+print()
+print("Средний бал для каждого предмета каждой группы")
+def search_average_score_by_matrix(matrix):
+    res = [round(sum(x) / len(matrix), 2) for x in zip(*matrix)]
+    print(res)
 
 
+def search_gpa_by_students_group(groups_of_students):
+  for s, value in groups_of_students.items():
+      matrix_of_grades = [stud.marks_list for stud in value]
+      print('\nGPA for ' + s + ' group')
+      search_average_score_by_matrix(matrix_of_grades)
 
+search_gpa_by_students_group(map_s)
