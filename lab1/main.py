@@ -1,4 +1,4 @@
-from leson2.student import Student
+from lab1.student import Student
 from itertools import groupby
 from pprint import pprint
 
